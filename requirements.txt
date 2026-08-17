@@ -1,0 +1,4 @@
+psycopg[binary]
+faker==40.36.0
+pytest
+python-dotenv
