@@ -17,3 +17,14 @@ Using fixed seeds, pinned Faker versions, and fixed date ranges makes generated 
 - Allowed statuses: ACTIVE, INACTIVE, SUSPENDED
 - Email is required and must follow a basic valid email format
 - customer_id is required
+
+### PostgreSQL data loading
+
+What I worked on:
+Added a loader that generates the two customer datasets and loads them into PostgreSQL.
+
+What I verified:
+The loader can be rerun without stacking old data, and the database contains the expected missing records, duplicate, field mismatch, and invalid email.
+
+What I learned:
+Using one transaction keeps the table reset and inserts together, so a failed load does not leave the database partially updated.
