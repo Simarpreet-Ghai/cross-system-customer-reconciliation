@@ -28,3 +28,18 @@ The loader can be rerun without stacking old data, and the database contains the
 
 What I learned:
 Using one transaction keeps the table reset and inserts together, so a failed load does not leave the database partially updated.
+
+### Reconciliation rules
+
+- MISSING_IN_A: customer exists in System B but not System A
+- MISSING_IN_B: customer exists in System A but not System B
+- DUPLICATE: the same customer_id appears more than once in one system
+- FIELD_MISMATCH: the customer exists in both systems but a comparable field is different
+- INVALID_RECORD: the record violates one of the defined customer data-quality rules
+
+### Record eligibility
+
+- A missing or blank customer_id is reported as INVALID_RECORD and excluded from cross-system matching.
+- A duplicate customer_id is reported as DUPLICATE and excluded from normal one-to-one field comparison.
+- A valid, unique customer_id can be used for missing-record checks.
+- Records that fail email or status validation are reported as INVALID_RECORD and excluded from field-mismatch comparison.
