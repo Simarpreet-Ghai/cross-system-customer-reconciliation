@@ -32,7 +32,7 @@ def customer_rows(customers):
     ]
 
 
-def load_customer_data():
+def load_customer_data(database_url=DATABASE_URL):
     system_a, system_b = create_source_datasets(100)
 
     system_a, system_b, manifest = seed_anomalies(
@@ -43,7 +43,7 @@ def load_customer_data():
     rows_a = customer_rows(system_a)
     rows_b = customer_rows(system_b)
 
-    with psycopg.connect(DATABASE_URL) as conn:
+    with psycopg.connect(database_url) as conn:
         with conn.cursor() as cursor:
             cursor.execute(
                 """

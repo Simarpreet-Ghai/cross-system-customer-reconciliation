@@ -41,8 +41,8 @@ def run_sql_file(cursor, filename):
     ]
 
 
-def run_reconciliation():
-    with psycopg.connect(DATABASE_URL) as conn:
+def run_reconciliation(database_url=DATABASE_URL):
+    with psycopg.connect(database_url) as conn:
         with conn.cursor() as cursor:
             cursor.execute(
                 """
