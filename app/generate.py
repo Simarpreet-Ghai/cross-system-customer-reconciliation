@@ -144,16 +144,9 @@ def save_manifest(manifest, path="data/generated/manifest.json"):
 if __name__ == "__main__":
     system_a, system_b = create_source_datasets(100)
 
-    print("Systems start identical:", system_a == system_b)
-
     system_a, system_b, manifest = seed_anomalies(
         system_a,
         system_b,
     )
     
     save_manifest(manifest)
-
-    print("Systems identical after anomalies:", system_a == system_b)
-
-    print("\nSeeded anomalies:")
-    print(manifest)
