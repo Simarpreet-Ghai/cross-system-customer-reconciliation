@@ -1,17 +1,15 @@
 # Project Metrics
 
-These are measurements taken from the current deterministic project data and automated tests.
+I wanted to keep track of a few real numbers from the project so I can use them later without guessing or exaggerating anything.
 
 ## Seeded Anomaly Detection
 
-Metric: Seeded anomalies correctly detected
+I intentionally added 5 known problems into the generated customer data.
 
-Result: 5/5 (100%)
+The reconciliation engine detected all 5.
 
-How measured:
-The ground-truth pytest test compares the issues intentionally planted by the data generator against the issues returned by the reconciliation engine.
+Result:
 
-Command:
-
-```bash
-python -m pytest tests/test_ground_truth.py -v
+```text
+5/5 seeded anomalies detected
+100%
