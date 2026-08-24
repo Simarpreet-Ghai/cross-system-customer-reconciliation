@@ -4,6 +4,13 @@ I built this project to learn more about Python, PostgreSQL, SQL, and data-quali
 
 The project generates synthetic customer records, intentionally adds a few inconsistencies, loads both systems into PostgreSQL, and then detects and records the differences.
 
+## Demo
+
+A short walkthrough showing the reconciliation process, generated report, saved run history, and automated tests.
+> This demo has audio narration!
+
+https://github.com/user-attachments/assets/a6ae6753-a84c-4107-b95a-a703687fe0d6
+
 ## What It Detects
 
 The reconciliation logic currently finds:
