@@ -21,9 +21,9 @@ SQL_DIR = PROJECT_ROOT / "sql"
 @pytest.fixture
 def test_database():
     with psycopg.connect(TEST_DATABASE_URL) as conn:
-        if conn.info.dbname != "reconciliation_test":
+        if not conn.info.dbname.endswith("_test"):
             raise RuntimeError(
-                "Tests must only run against reconciliation_test"
+                "Tests must only run against a database ending in '_test'"
             )
 
         with conn.cursor() as cursor:

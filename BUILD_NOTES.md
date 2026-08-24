@@ -43,3 +43,17 @@ Using one transaction keeps the table reset and inserts together, so a failed lo
 - A duplicate customer_id is reported as DUPLICATE and excluded from normal one-to-one field comparison.
 - A valid, unique customer_id can be used for missing-record checks.
 - Records that fail email or status validation are reported as INVALID_RECORD and excluded from field-mismatch comparison.
+
+### Reproducibility check
+
+What happened:
+A fresh clone worked through setup, loading, and reconciliation, but the database tests failed when I used a test database with a different name.
+
+Problem encountered / why:
+The pytest database fixture only allowed a database named exactly `reconciliation_test`, which made the setup unnecessarily machine-specific.
+
+How I fixed it:
+Changed the safety check to allow any database name ending in `_test` while still blocking development databases.
+
+What I learned:
+Reproducing a project from a clean clone can expose assumptions that are hidden on the original development machine.
